@@ -1,9 +1,11 @@
-﻿using EPiServer.Core;
+using EPiServer.Core;
 using EPiServer.DataAbstraction;
 using EPiServer.ServiceLocation;
 using AlloyTemplates.Controllers;
+using AlloyTemplates.Models;
 using AlloyTemplates.Models.Blocks;
 using AlloyTemplates.Models.Pages;
+using AlloyTemplates.Models.Rendering;
 using EPiServer.Web;
 using EPiServer.Web.Mvc;
 

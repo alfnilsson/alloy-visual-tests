@@ -58,7 +58,7 @@ namespace AlloyTemplates.Business
         {
             return string.Format(
                 "{0}?ReturnUrl={1}",
-                (FormsAuthentication.IsEnabled ? FormsAuthentication.LoginUrl : VirtualPathUtility.ToAbsolute(Global.AppRelativeLoginPath)),
+                (FormsAuthentication.IsEnabled ? FormsAuthentication.LoginUrl : VirtualPathUtility.ToAbsolute(Models.Global.AppRelativeLoginPath)),
                 _urlResolver.GetUrl(returnToContentLink));
         }
 

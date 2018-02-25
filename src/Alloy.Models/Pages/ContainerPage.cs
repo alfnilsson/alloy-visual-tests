@@ -1,4 +1,4 @@
-﻿using AlloyTemplates.Business.Rendering;
+using AlloyTemplates.Models.Rendering;
 
 namespace AlloyTemplates.Models.Pages
 {

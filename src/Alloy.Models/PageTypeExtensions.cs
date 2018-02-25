@@ -1,8 +1,8 @@
-﻿using System;
+using System;
 using EPiServer.DataAbstraction;
 using EPiServer.ServiceLocation;
 
-namespace AlloyTemplates.Business
+namespace AlloyTemplates.Models
 {
     /// <summary>
     /// Provides extension methods for types intended to be used when working with page types

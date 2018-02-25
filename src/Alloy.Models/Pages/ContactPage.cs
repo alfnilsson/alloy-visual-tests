@@ -1,5 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
-using AlloyTemplates.Business.Rendering;
+using System.ComponentModel.DataAnnotations;
+using AlloyTemplates.Models.Rendering;
 using EPiServer.Web;
 using EPiServer.Core;
 

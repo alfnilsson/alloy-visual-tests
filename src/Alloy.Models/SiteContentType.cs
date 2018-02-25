@@ -1,4 +1,4 @@
-﻿using EPiServer.DataAnnotations;
+using EPiServer.DataAnnotations;
 
 namespace AlloyTemplates.Models
 {

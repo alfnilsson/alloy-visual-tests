@@ -1,9 +1,9 @@
 using System.ComponentModel.DataAnnotations;
+using AlloyTemplates.Models.ModelProperties;
 using EPiServer.Core;
 using EPiServer.DataAbstraction;
 using EPiServer.DataAnnotations;
-using AlloyTemplates.Business.Rendering;
-using AlloyTemplates.Models.Properties;
+using AlloyTemplates.Models.Rendering;
 using EPiServer.Web;
 
 namespace AlloyTemplates.Models.Pages

@@ -298,6 +298,9 @@
     <Compile Include="Business\Channels\DisplayResolutions.cs" />
     <Compile Include="Business\Channels\MobileChannel.cs" />
     <Compile Include="Business\Channels\WebChannel.cs" />
+    <Compile Include="Business\EditorDescriptors\ContactPageSelectionFactory.cs" />
+    <Compile Include="Business\EditorDescriptors\ContactPageSelector.cs" />
+    <Compile Include="Business\EditorDescriptors\StringListEditorDescriptor.cs" />
     <Compile Include="Business\Initialization\BundleConfig.cs" />
     <Compile Include="Business\Initialization\CustomizedRenderingInitialization.cs" />
     <Compile Include="Business\Initialization\DependencyResolverInitialization.cs" />
@@ -305,27 +308,19 @@
     <Compile Include="Business\Initialization\DisplayRegistryInitialization.cs" />
     <Compile Include="Business\Initialization\FilterConfig.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
-    <Compile Include="Models\Pages\ISearchPage.cs" />
     <Compile Include="Business\PageViewContextFactory.cs" />
     <Compile Include="Business\Rendering\ErrorHandlingContentRenderer.cs" />
-    <Compile Include="Business\Rendering\ICustomCssInContentArea.cs" />
     <Compile Include="Business\UIDescriptors\ContainerPageUIDescriptor.cs" />
     <Compile Include="Controllers\ImageFileController.cs" />
     <Compile Include="Controllers\VideoFileController.cs" />
     <Compile Include="Controllers\StartPageController.cs" />
     <Compile Include="Business\Rendering\AlloyContentAreaRenderer.cs" />
     <Compile Include="Controllers\ContactBlockController.cs" />
-    <Compile Include="Global.cs" />
     <Compile Include="Helpers\CategorizableExtensions.cs" />
     <Compile Include="Business\Rendering\TemplateCoordinator.cs" />
     <Compile Include="Business\ContentExtensions.cs" />
     <Compile Include="Business\ContentLocator.cs" />
-    <Compile Include="Business\Rendering\IContainerPage.cs" />
     <Compile Include="Business\IModifyLayout.cs" />
-    <Compile Include="Business\PageTypeExtensions.cs" />
-    <Compile Include="Business\EditorDescriptors\ContactPageSelectionFactory.cs" />
-    <Compile Include="Business\EditorDescriptors\ContactPageSelector.cs" />
-    <Compile Include="Business\EditorDescriptors\StringListEditorDescriptor.cs" />
     <Compile Include="Business\ServiceLocatorDependencyResolver.cs" />
     <Compile Include="Business\Rendering\SiteViewEngine.cs" />
     <Compile Include="Business\PageContextActionFilter.cs" />
@@ -338,33 +333,9 @@
     </Compile>
     <Compile Include="Helpers\HtmlHelpers.cs" />
     <Compile Include="Helpers\UrlHelpers.cs" />
-    <Compile Include="Models\Blocks\ButtonBlock.cs" />
-    <Compile Include="Models\Blocks\ContactBlock.cs" />
-    <Compile Include="Models\Blocks\EditorialBlock.cs" />
-    <Compile Include="Models\Blocks\JumbotronBlock.cs" />
-    <Compile Include="Models\Blocks\PageListBlock.cs" />
-    <Compile Include="Models\Blocks\SiteBlockData.cs" />
-    <Compile Include="Models\Blocks\SiteLogotypeBlock.cs" />
-    <Compile Include="Models\Blocks\TeaserBlock.cs" />
-    <Compile Include="Models\Media\GenericMedia.cs" />
-    <Compile Include="Models\Media\ImageFile.cs" />
-    <Compile Include="Models\Media\VideoFile.cs" />
-    <Compile Include="Models\Pages\ArticlePage.cs" />
-    <Compile Include="Models\Pages\ContactPage.cs" />
-    <Compile Include="Models\Pages\ContainerPage.cs" />
-    <Compile Include="Models\Pages\IHasRelatedContent.cs" />
-    <Compile Include="Models\Pages\LandingPage.cs" />
-    <Compile Include="Models\Pages\NewsPage.cs" />
-    <Compile Include="Models\Pages\ProductPage.cs" />
-    <Compile Include="Models\Pages\SitePageData.cs" />
-    <Compile Include="Models\Pages\StandardPage.cs" />
-    <Compile Include="Models\Pages\StartPage.cs" />
-    <Compile Include="Models\Properties\PropertyStringList.cs" />
     <Compile Include="Models\Register\RegisterViewModel.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Models\SiteContentType.cs" />
-    <Compile Include="Models\SiteImageUrl.cs" />
     <Compile Include="Models\ViewModels\ContactBlockModel.cs" />
     <Compile Include="Models\ViewModels\ContentRenderingErrorModel.cs" />
     <Compile Include="Models\ViewModels\ImageViewModel.cs" />
@@ -383,8 +354,6 @@
     <Content Include="ClientResources\Styles\LayoutIcons.css" />
     <Content Include="ClientResources\Styles\Styles.css" />
     <Content Include="favicon.ico" />
-    <None Include="Models\Blocks\_ReadMe.txt" />
-    <None Include="Models\Pages\_ReadMe.txt" />
     <Content Include="modules\_protected\EPiServer.Search.Cms\IndexContent.aspx" />
     <Content Include="Resources\LanguageFiles\Display.xml" />
     <Content Include="Resources\LanguageFiles\ContentTypeNames.xml">
@@ -514,6 +483,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />
+    <Folder Include="Models\Properties\" />
   </ItemGroup>
   <ProjectExtensions>
     <VisualStudio>
@@ -539,5 +509,11 @@
   <ItemGroup>
     <NugetPackage Include="Alloy.Mvc.Template.Search.Sources.nuspec" />
     <NugetPackage Include="Alloy.Mvc.Template.Sources.nuspec" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Alloy.Models\Alloy.Models.csproj">
+      <Project>{870a414d-b5b0-4f20-9553-7c9228869a5a}</Project>
+      <Name>Alloy.Models</Name>
+    </ProjectReference>
   </ItemGroup>
 </Project>

@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 using EPiServer.Core;
 using EPiServer.Framework.DataAnnotations;
 using EPiServer.PlugIn;
 
-namespace AlloyTemplates.Models.Properties
+namespace AlloyTemplates.Models.ModelProperties
 {
     /// <summary>
     /// Property type for storing a list of strings

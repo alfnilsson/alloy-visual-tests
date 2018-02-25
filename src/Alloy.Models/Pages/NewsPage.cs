@@ -1,9 +1,8 @@
-﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
 using EPiServer.DataAbstraction;
 using EPiServer.Filters;
 using EPiServer.Framework.Localization;
 using EPiServer.ServiceLocation;
-using AlloyTemplates.Business;
 using AlloyTemplates.Models.Blocks;
 
 namespace AlloyTemplates.Models.Pages
