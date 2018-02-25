@@ -32,28 +32,28 @@ namespace Toders.VisualTests.Tests
             });
         }
 
-        private void PerformSeleniumTests(VisualTester.VisualTesterBase delegatesBase, Action<IWebDriver> test)
+        private void PerformSeleniumTests(VisualTesterBase visualTester, Action<IWebDriver> performTests)
         {
             var driver = new PhantomJSDriver();
             driver.Manage().Window.Size = new Size(1280, 980);
 
             try
             {
-                delegatesBase.Initialize(driver);
+                visualTester.Initialize(driver);
 
-                test(driver);
+                performTests(driver);
 
-                delegatesBase.Close();
+                visualTester.Close();
             }
             catch (Exception ex)
             {
-                delegatesBase.Exception(driver);
+                visualTester.Exception(driver);
                 Console.WriteLine(ex);
             }
             finally
             {
                 driver.Quit();
-                delegatesBase.FinalizeTest();
+                visualTester.FinalizeTest();
             }
         }
     }
