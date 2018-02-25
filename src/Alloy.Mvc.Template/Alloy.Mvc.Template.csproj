@@ -515,5 +515,9 @@
       <Project>{870a414d-b5b0-4f20-9553-7c9228869a5a}</Project>
       <Name>Alloy.Models</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Toders.VisualTests.StaticContent\Toders.VisualTests.StaticContent.csproj">
+      <Project>{640b82fb-21fa-4801-b79f-984129612d25}</Project>
+      <Name>Toders.VisualTests.StaticContent</Name>
+    </ProjectReference>
   </ItemGroup>
 </Project>
