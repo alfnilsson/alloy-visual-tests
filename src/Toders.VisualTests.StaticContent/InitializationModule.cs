@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Specialized;
 using System.Linq;
 using EPiServer;
@@ -33,22 +33,7 @@ namespace Toders.VisualTests.StaticContent
                 return;
             }
 
-            var assetsFolder = contentRepository.GetChildren<StaticAssetsRootFolder>(ContentReference.RootPage).FirstOrDefault();
-            if (assetsFolder == null)
-            {
-                assetsFolder = contentRepository.GetDefault<StaticAssetsRootFolder>(ContentReference.RootPage);
-                assetsFolder.Name = "Static Assets";
-                contentRepository.Save(assetsFolder, AccessLevel.NoAccess);
-            }
-
-            //var assetsFolderName = "Static Assets";
-            //var assetsFolder = contentRepository.GetChildren<ContentFolder>(ContentReference.RootPage).FirstOrDefault(x => x.Name == assetsFolderName);
-            //if (assetsFolder == null)
-            //{
-            //    assetsFolder = contentRepository.GetDefault<ContentFolder>(ContentReference.RootPage);
-            //    assetsFolder.Name = assetsFolderName;
-            //    contentRepository.Save(assetsFolder, AccessLevel.NoAccess);
-            //}
+            StaticAssetsRootFolder assetsFolder = EnsureAssetsFolder(contentRepository);
 
             var contentTypeRepository = ServiceLocator.Current.GetInstance<IContentTypeRepository>();
             var objectInstanceCache = ServiceLocator.Current.GetInstance<IObjectInstanceCache>();
@@ -62,6 +47,19 @@ namespace Toders.VisualTests.StaticContent
 
             var siteDefinitionRepository = ServiceLocator.Current.GetInstance<ISiteDefinitionRepository>();
             EnsureSiteDefinition(siteDefinitionRepository, startPage.ContentLink, assetsFolder.ContentLink);
+        }
+
+        private static StaticAssetsRootFolder EnsureAssetsFolder(IContentRepository contentRepository)
+        {
+            var assetsFolder = contentRepository.GetChildren<StaticAssetsRootFolder>(ContentReference.RootPage).FirstOrDefault();
+            if (assetsFolder == null)
+            {
+                assetsFolder = contentRepository.GetDefault<StaticAssetsRootFolder>(ContentReference.RootPage);
+                assetsFolder.Name = "Static Assets";
+                contentRepository.Save(assetsFolder, AccessLevel.NoAccess);
+            }
+
+            return assetsFolder;
         }
 
         private static void SetupProvider<TProvider>(TProvider provider, ContentReference entryPoint, IContentProviderManager contentProviderManager)
@@ -93,7 +91,7 @@ namespace Toders.VisualTests.StaticContent
                 Name = "Static Website",
                 StartPage = startPage,
                 SiteAssetsRoot = assetsFolder,
-                SiteUrl = new Uri("http://localhost:2335")
+                SiteUrl = new Uri("http://localhost:2335") // To do: Should come from configuration?
             };
 
             siteDefinitionRepository.Save(siteDefinition);

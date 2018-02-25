@@ -30,30 +30,16 @@ namespace Toders.VisualTests.StaticContent.Content.Pages
                 "Example Pages");
 
             var teaserPage = Create<StandardPage>(
-                examplePages,
+                examplePages, // Create as child to the Example page
                 "Teasers",
                 page =>
                 {
                     page.PageImage = _assets.Image;
                     page.TeaserText = "Here are some examples of teasers in various sizes.";
-                    var contentArea = new ContentArea();
-                    foreach (var teaser in _assets.Teasers)
-                    {
-                        contentArea.Items.Add(new ContentAreaItem
-                        {
-                            ContentLink = teaser
-                        });
-                        contentArea.Items.Add(new ContentAreaItem
-                        {
-                            ContentLink = teaser,
-                            RenderSettings = narrowRenderSettings
-                        });
-                    }
-
-                    page.MainContentArea = contentArea;
+                    // Add the teasers later, we need an example page that will be added to the Content Area first
                 });
             var pageAsTeaser = Create<StandardPage>(
-                teaserPage,
+                teaserPage, // Add the page that should be used in the Content Area as a child to the newly created page.
                 "Page as Teaser",
                 page =>
                 {
@@ -62,9 +48,23 @@ namespace Toders.VisualTests.StaticContent.Content.Pages
                     page.TeaserText = "This is what it looks like when a teaser is added to a page.";
                 });
 
+            // Add the teasers as well as the page to the Main Content Area
             Update(teaserPage, page =>
             {
-                var contentArea = page.MainContentArea;
+                var contentArea = new ContentArea();
+                foreach (var teaser in _assets.Teasers)
+                {
+                    contentArea.Items.Add(new ContentAreaItem
+                    {
+                        ContentLink = teaser
+                    });
+                    contentArea.Items.Add(new ContentAreaItem
+                    {
+                        ContentLink = teaser,
+                        RenderSettings = narrowRenderSettings
+                    });
+                }
+
                 contentArea.Items.Add(new ContentAreaItem
                 {
                     ContentLink = pageAsTeaser.ContentLink,
@@ -74,6 +74,8 @@ namespace Toders.VisualTests.StaticContent.Content.Pages
                 {
                     ContentLink = pageAsTeaser.ContentLink
                 });
+
+                page.MainContentArea = contentArea;
             });
 
             Update(examplePages, page =>
