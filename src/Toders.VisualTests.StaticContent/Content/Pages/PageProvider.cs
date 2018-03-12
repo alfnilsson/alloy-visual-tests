@@ -78,12 +78,40 @@ namespace Toders.VisualTests.StaticContent.Content.Pages
                 page.MainContentArea = contentArea;
             });
 
+            var textFormatPage = Create<StandardPage>(
+                examplePages, // Create as child to the Example page
+                "Text format",
+                page =>
+                {
+                    page.TeaserText = "Here are some examples of text in various formats.";
+
+                    var mainBody = "<h2>Header 2</h2>" +
+                        "<h3>Header 3</h3>" +
+                        "<p>Paragraph with <strong>strong</strong> and <em>italic</em> text. Also a <strong><em>combination</em></strong>.</p>" +
+                        "<ul>" +
+                        "<li>Bullet 1</li>" +
+                        "<li>Bullet 2</li>" +
+                        "<li>Bullet 3</li>" +
+                        "</ul>" +
+                        "<ol>" +
+                        "<li>Numbered 1</li>" +
+                        "<li>Numbered 2</li>" +
+                        "<li>Numbered 3</li>" +
+                        "</ol>";
+                    page.MainBody = new XhtmlString(mainBody);
+                });
+
             Update(examplePages, page =>
             {
                 var contentArea = new ContentArea();
                 contentArea.Items.Add(new ContentAreaItem
                 {
                     ContentLink = teaserPage.ContentLink,
+                    RenderSettings = narrowRenderSettings
+                });
+                contentArea.Items.Add(new ContentAreaItem
+                {
+                    ContentLink = textFormatPage.ContentLink,
                     RenderSettings = narrowRenderSettings
                 });
                 page.MainContentArea = contentArea;
