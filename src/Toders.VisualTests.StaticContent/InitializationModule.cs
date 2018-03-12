@@ -22,6 +22,8 @@ namespace Toders.VisualTests.StaticContent
     [ModuleDependency(typeof(EPiServer.Web.InitializationModule))]
     public class InitializationModule : IInitializableModule
     {
+        private const string StaticWebsiteUrl = "http://localhost:2335"; // Change this to your own URL
+
         public void Initialize(InitializationEngine context)
         {
             var contentProviderManager = ServiceLocator.Current.GetInstance<IContentProviderManager>();
@@ -91,7 +93,7 @@ namespace Toders.VisualTests.StaticContent
                 Name = "Static Website",
                 StartPage = startPage,
                 SiteAssetsRoot = assetsFolder,
-                SiteUrl = new Uri("http://localhost:2335") // To do: Should come from configuration?
+                SiteUrl = new Uri(StaticWebsiteUrl) // To do: Should come from configuration?
             };
 
             siteDefinitionRepository.Save(siteDefinition);
